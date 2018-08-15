@@ -1,0 +1,56 @@
+@import './index.less';
+.h-center {
+  display: flex;
+  align-items: center;
+}
+
+.v-center {
+  display: flex;
+  justify-content: center;
+}
+
+.vh-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+.column-space-between{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.column-align-center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.column-center{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center; 
+}
+.all-border {
+  position: relative;
+}
+.all-border::before {
+  content: "";
+  pointer-events: none;
+  /* 防止点击触发 */
+  box-sizing: border-box;
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: 0;
+  top: 0;
+  border:1px solid @active-color;
+  -webkit-transform-origin: left top;
+  -webkit-transform: scale(0.5);
+  transform-origin: left top;
+  transform: scale(0.5);
+  z-index: 999;
+}
