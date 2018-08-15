@@ -86,6 +86,16 @@
                     <div>:</div>
                     <div class="seconds time">14</div>
                 </div>
+                <div class="kill-goods-box">
+                    <div class="kill-goods-img">
+                        <img src="imgs/modal_goods.png" alt="">
+                    </div>
+                    <div class="kill-goods-info">
+                        <p>peacock保温杯</p>
+                        <p>350积分限时秒杀</p>
+                    </div>
+                    <div class="go-detail">查看详情</div>
+                </div>
             </div>
             <div class="kill-bot">
                 <div class="kill-bot-item">
@@ -170,9 +180,9 @@
     </div>
 
     <!-- 所有商品 -->
-    <div class="all-goods-box  nav-action">
-        <div class="all-goods-wrap integral-shadow">
-            <div class="all-goods-top">
+    <div class="all-goods-top-wrap">
+        <div class="all-goods-top-box ">
+            <div class="all-goods-top integral-shadow">
                 <div class="go-select">
                     <span>兑换量</span>
                     <img src="imgs/select.png" alt="">
@@ -182,8 +192,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="all-goods-box  nav-action">
+        <div class="all-goods-wrap">
             <div class="all-goods-bottom ">
-                <div class="all-good-cat-box integral-shadow">
+                <div class="all-good-cat-box">
                     <div class="cat-item active">全部商品</div>
                     <div class="cat-item">新用户有礼</div>
                     <div class="cat-item">官方定制</div>
@@ -328,6 +342,19 @@
                 <div class="goods-img">
                     <img src="imgs/modal_goods.png" alt="">
                 </div>
+                <div class="modal-goods-price-box">
+                    <div class="real-price">
+                        <img src="imgs/icon.png" alt="">
+                        <span>390积分</span>
+                    </div>
+                    <div class="relative-price">参考价值：150元</div>
+                </div>
+                <div class="modal-goods-title">PEACOCK保温杯PEACOCK保温杯</div>
+                <div class="modal-goods-desc">PEACOCK保温杯百年品牌，匠心制造。容量550ML。双 层真空，锁住温度24H保温；轻量杯身，约重200g。一键 开盖，方便开车运动时单手喝水。</div>
+                <div class="modal-option">
+                    <div class="option-item">加入购物车</div>
+                    <div class="option-item">结算</div>
+                </div>
             </div>
             <img src="imgs/close-btn.png" alt="" class="close">
         </div>
@@ -352,16 +379,20 @@
             var scrolls = scr.scrollTop;
             if (scrolls > bannerHeight) {
                 $('.top-nav-wrap').css({'position':'fixed',backgroundColor:'#fcfcfc'});
+                $('.all-goods-top-wrap .all-goods-top-box').css({position:'fixed',top:'1.7rem'});
+                $('.all-good-cat-box').css({position:'fixed',top:'1.7rem'});
             } else {
                 $('.top-nav-wrap').css({'position': 'absolute',backgroundColor:'transparent'});
+                $('.all-goods-top-wrap .all-goods-top-box').css({position:'absolute',top:0});
+                $('.all-good-cat-box').css({position:'absolute',top:'-0.7rem'});
             }
         }
 
         //点击头部导航
         $('.top-nav-wrap .top-nav-item').click(function () {
-            $('.top-nav-wrap .top-nav-item').removeClass('active');
             var index = $(this).index();
             if (index<3){
+                $('.top-nav-wrap .top-nav-item').removeClass('active');
                 $(this).addClass('active');
                 $(document).scrollTop(0);
             }
@@ -370,14 +401,17 @@
                 $('.all-goods-box').show();
                 $('.all-good-cat-box .cat-item').removeClass('active');
                 $('.all-good-cat-box .cat-item').eq(0).addClass('active');
+                $('.all-goods-top-wrap').show();
             } else if (index==1){
                 $('.activity-zone').show();
                 $('.all-goods-box').hide();
+                $('.all-goods-top-wrap').hide();
             } else if (index==2){
                 // $('.top-nav-wrap .top-nav-item').removeClass('active');
                 // $(this).addClass('active');
                 $('.activity-zone').hide();
                 $('.all-goods-box').show();
+                $('.all-goods-top-wrap').show();
                 $('.all-good-cat-box .cat-item').removeClass('active');
                 $('.all-good-cat-box .cat-item').eq(2).addClass('active');
             } else if (index==3) {
@@ -459,6 +493,11 @@
 
         $('.goods-modal .close').click(function(){
             $('.goods-modal').hide();
+        })
+
+        // 点击商品
+        $('.all-goods .goods-item').click(function(){
+            $('.goods-modal').show();
         })
 
     })

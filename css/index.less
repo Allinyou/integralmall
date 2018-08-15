@@ -102,6 +102,7 @@
         margin-top:0.2rem;
         border-radius:0.16rem 0.16rem 0 0;
         overflow: hidden;
+        position: relative;
         .kill-top{
             position: relative;
             img{
@@ -133,6 +134,43 @@
                     margin-left:0.2rem;
                 }
             }
+            .kill-goods-box{
+                position: absolute;
+                top:0;
+                left:0;
+                width: 100%;
+                height: 100%;
+                .kill-goods-img{
+                    margin-left:0.7rem;
+                    width: 1.5rem;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .kill-goods-info{
+                    position: absolute;
+                    top:38%;
+                    left:45%;
+                    color:#fff;
+                    font-size:0.24rem;
+                    p:first-child{
+                        font-size:0.32rem;
+                        margin-bottom:0.01rem;
+                    }
+                }
+                .go-detail{
+                    font-size: 0.24rem;
+                    position: absolute;
+                    bottom:0.2rem;
+                    right:0.3rem;
+                    height: 0.4rem;
+                    line-height: 0.4rem;
+                    padding:0 0.15rem;
+                    border-radius: 0.2rem;
+                    color:#729ddd;
+                    background-color: #fff;
+                }
+            }   
         }
         .kill-bot{
             overflow: hidden;
@@ -250,45 +288,61 @@
 }
 
 //全部商品----------------------------------------------------------------------------------------------------------------------------------
-.all-goods-box{
-    // display: none;
-    padding:0 0.3rem;
-    .all-goods-top{
-        position: relative;
+.all-goods-top-wrap{
+    position: relative;
+    height:0.7rem;
+    .all-goods-top-box{
+        position: absolute;
+        width: 100%;
+        top:0;
+        left:0;
+        box-sizing: border-box;
         height: 0.7rem;
-        background-color: @main-color;
-        .go-select{
-            position: absolute;
-            top:0;
-            right:0;
+        padding: 0 0.3rem;
+        z-index: 1000;
+        .all-goods-top{  
+            position: relative;
             height: 100%;
-            width: 1.5rem;
-            color:#fff;
-            .vh-center;
-            img{
-                width: 0.3rem;
-                margin-left:0.15rem;
-            }
-            .select-box{
-                display: none;
+            background-color: @main-color;
+            .go-select{
                 position: absolute;
-                top:100%;
-                left:0;
-                z-index: 99;
-                width: 100%;
-                .select-item{
-                    height: 0.7rem;
-                    text-align: center;
-                    line-height: 0.7rem;
-                    background-color: @main-color;
-                    border-top:1px solid #fff;
-                    // &:last-child{
-                    //     border:none;
-                    // }
+                top:0;
+                right:0;
+                height: 100%;
+                width: 1.5rem;
+                color:#fff;
+                .vh-center;
+                img{
+                    width: 0.3rem;
+                    margin-left:0.15rem;
+                }
+                .select-box{
+                    display: none;
+                    position: absolute;
+                    top:100%;
+                    left:0;
+                    z-index: 99;
+                    width: 100%;
+                    .select-item{
+                        height: 0.7rem;
+                        text-align: center;
+                        line-height: 0.7rem;
+                        background-color: @main-color;
+                        border-top:1px solid #fff;
+                        // &:last-child{
+                        //     border:none;
+                        // }
+                    }
                 }
             }
         }
     }
+    
+}
+.all-goods-box{
+    // display: none;
+    padding:0 0.3rem;
+    position: relative;
     .all-goods-bottom{
         &:after{
             content: '';
@@ -297,33 +351,41 @@
             height: 0;
             clear: both;
         }
-        position: relative;
         .all-good-cat-box{
             position: absolute;
-            width: 23%;
-            padding-bottom:0.7rem;
-            min-height: 100%;
+            width: 1.54rem;
+            // padding-bottom:0.7rem;
+            // min-height: 100%;
             top:-0.7rem;
+            left:0.3rem;
+            z-index: 1001;
+            background-color: #fff;
             .cat-item{
                 width: 100%;
                 height: 0.7rem;
+                box-sizing: border-box;
                 border-bottom:1px solid #ebebeb;
+                border-left:1px solid #ebebeb;
+                border-right:1px solid #ebebeb;
                 text-align: center;
                 line-height: 0.7rem;
                 background-color: #fff;
                 color:#333;
-                &:first-child{
-                    border-bottom:none;
+                &:first-child{   
+                    box-shadow: 0 0 6px 1px rgba(0,0,0,0.1);
                 }
                 &.active{
+                    border-left:none;
+                    border-color:rgba(0,0,0,0.1);
                     background-color: @main-color;
                     color:#fff;
                 }
             }
         }
         .all-goods{
-            width:77%;
+            width:5.36rem;
             float: right;
+            border-left:1px solid #ebebeb;
             .goods-item{
                 float: left;
                 height: 2.36rem;
@@ -331,9 +393,9 @@
                 box-sizing: border-box;
                 border-right:1px solid #ebebeb;
                 border-bottom:1px solid #ebebeb;
-                &:nth-child(2n){
-                    border-right: none;
-                }
+                // &:nth-child(2n){
+                //     border-right: none;
+                // }
                 // &:last-child{
                 //     border-bottom: none;
                 // }
@@ -411,7 +473,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1002;
-    //display: none;
+    display: none;
     .modal-box{
         position: absolute;
         top:50%;
@@ -435,6 +497,57 @@
                 img{
                     width: 50%;
                     max-width: 4rem;
+                }
+            }
+            .modal-goods-price-box{
+                padding:0 0.3rem;
+                .space-between;
+                align-items: flex-end;
+                .real-price{
+                    .h-center;
+                    img{
+                        width: 0.3rem;
+                        display: block;
+                        margin-right:0.1rem;
+                    }
+                    span{
+                        font-size:0.3rem;
+                        font-weight: bold;
+                        color:@active-color;
+                        line-height: 0.34rem;
+                    }
+                }
+                .relative-price{
+                    color:#999999;
+                    font-size:0.24rem;
+                }
+            }
+            .modal-goods-title{
+                padding:0.15rem 0.3rem;
+                border-bottom:1px solid #cbd7e2;
+            }
+            .modal-goods-desc{
+                padding: 0.15rem 0.3rem 0;
+                font-size:0.24rem;
+                text-align: justify;
+                line-height: 0.4rem;
+            }
+            .modal-option{
+                position: absolute;
+                width: 100%;
+                box-sizing: border-box;
+                bottom:1rem;
+                padding:0 0.3rem;
+                .space-between;
+                .option-item{
+                    height: 0.62rem;
+                    width: 43%;
+                    background-color: @main-color;
+                    color:#fff;
+                    font-size:0.3rem;
+                    text-align: center;
+                    line-height: 0.62rem;
+                    border-radius: 0.14rem;
                 }
             }
         }
