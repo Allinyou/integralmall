@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="js/common.js"></script>
+    <script src="js/bscroll.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <title>智能回复</title>
+</head>
+<body>
+    <div id="chat-box">
+        <div class="chat-wrap">
+            <div class="indd" style="background-color: red;">撒大苏打
+                <span>哈哈哈哈</span>
+            </div>
+        </div>
+    </div>
+    <div class="option integral-shadow">
+        <input type="text" placeholder="有问题 找昌哥">
+        <img src="imgs/send_no.png" alt="" class="send" data-img="imgs/send.png">
+        <!-- <img src="imgs/send_no.png" alt=""> -->
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        // 点击发送消息
+        var scroll = null;
+        setTimeout(function(){
+            var scrollBox = document.getElementById('chat-box');
+            scroll = new BScroll(scrollBox, {
+                click:true,
+                bounce:false,
+                probeType: 3
+            });
+        },200)
+         
+
+
+        // 输入框输入内容
+		var inputText = '';
+		$('.option input').bind('input propertychange', function(){
+			if ($(this).val().trim()) {
+				$('.option .send').attr('src','imgs/send.png')
+			} else {
+				$('.option .send').attr('src','imgs/send_no.png')
+			}
+			inputText = $(this).val();
+		});
+
+
+		// 点击提交按钮
+		$('.send ').click(function(){
+			if (!inputText.trim()){
+				return;
+			}
+			wx.showToast({
+				title:'你好啊',
+				duration:1000
+			})
+			// alert(333)
+        })
+        $('.option input').bind('focus',function(){
+            // alert(222);
+            scroll.scrollToElement('span');          
+        })
+
+    })
+</script>

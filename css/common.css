@@ -10,10 +10,21 @@ img{
 a{
 	text-decoration:none;
 }
+
+input{
+	outline: none;
+	border:none;
+}
+
+::placeholder{
+	color:#999999;
+}
+
 body{
 	font-family:"Microsoft YaHei", SimHei, helvetica, arial, verdana, tahoma, sans-serif;
 	font-size:0.26rem;
 	background-color: #fcfcfc;
+	color:#333;
 }
 .weixin-toast{
 	position: fixed;
