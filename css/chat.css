@@ -5,8 +5,22 @@
   right: 0;
   bottom: 0.98rem;
 }
+#chat-box .chat-wrap {
+  min-height: 100%;
+  padding-bottom: 1px;
+  position: relative;
+}
+#chat-box .chat-wrap .pull-down-wrap {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  top: -50px;
+  text-align: center;
+  line-height: 50px;
+}
 #chat-box .indd {
-  height: 1000px;
+  height: 400px;
   display: flex;
   align-items: flex-end;
 }
