@@ -56,7 +56,6 @@
 // 活动专区---------------------------------------------------------------------------------------------------------------------------------
 .activity-zone{
     padding:0 0.3rem;
-    display: none;
     // 活动资讯
     .activity-info{
         height: 1.28rem;
@@ -69,9 +68,16 @@
             margin-right:0.2rem;
         }
         .activity-right{
+            position: relative;
             flex-grow:1;
             overflow: hidden;
             height: 1rem;
+            .active-right-wrap{
+                position: absolute;
+                top:0;
+                left:0;
+                right:0;
+            }
             .activity-right-item{
                 display: flex;
                 height: 0.5rem; 
@@ -289,6 +295,7 @@
 
 //全部商品----------------------------------------------------------------------------------------------------------------------------------
 .all-goods-top-wrap{
+    display: none;
     position: relative;
     height:0.7rem;
     .all-goods-top-box{
@@ -340,7 +347,7 @@
     
 }
 .all-goods-box{
-    // display: none;
+    display: none;
     padding:0 0.3rem;
     position: relative;
     .all-goods-bottom{
@@ -560,3 +567,5 @@
         }
     }
 }
+
+

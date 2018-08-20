@@ -15,9 +15,8 @@
     <div id="chat-box">
         <div class="chat-wrap">
             <div class="pull-down-wrap">下拉刷新</div>
-            <div class="indd" style="background-color: red;">撒大苏打
-                <span>哈哈哈哈</span>
-            </div>
+            <div class="indd" style="background:green;"></div>
+            <div class="indd" style="background:green;"></div>
         </div>
     </div>
     <div class="option integral-shadow">
@@ -48,7 +47,7 @@
                 // scroll.finishPullDown();
                 $('.pull-down-wrap').text('加载中 · · ·');
                 setTimeout(function(){
-                    $('.pull-down-wrap').text('刷新成功');
+                    $('.pull-down-wrap').text('加载成功');
                     setTimeout(function(){
                         $('.pull-down-wrap').text('下拉刷新');
                         scroll.finishPullDown();
@@ -72,7 +71,7 @@
 
 
 		// 点击提交按钮
-		$('.send ').click(function(){
+		$('.send ').click(function(e){
 			if (!inputText.trim()){
 				return;
 			}
@@ -80,35 +79,43 @@
 				title:'你好啊',
 				duration:1000
 			})
+            $('.chat-wrap').append('<div>'+inputText+'</div>');
+            $('.option input').val('');
+            $('.option .send').attr('src','imgs/send_no.png');
+            scroll.refresh();
+            inputText = '';
+            scrollToBottom();
 			// alert(333)
         })
 
         //键盘弹出
         var winHeight = $(window).height();   
         $(window).resize(function(){
-
             var thisHeight=$(this).height();
-
             if(winHeight - thisHeight >50){
-
-            //窗口发生改变(大),故此时键盘弹出
-
-            //当软键盘弹出，在这里面操作
-                // scroll.scrollToElement('span',200);
-                // alert(thisHeight);
-                var scrolly = $('.chat-wrap').height()-thisHeight+$('.option').height();
-                // alert(scrolly);
-                scroll.scrollTo(0,-scrolly,100,'linear');
-
-            }else{
-
-            //窗口发生改变(小),故此时键盘收起
-
-            //当软键盘收起，在此处操作
-
+                scrollToBottom();
             }
-
         });
 
+        function scrollToBottom() {
+            var scrolly = $('.chat-wrap').height()-$(window).height()+$('.option').height();
+            scroll.scrollTo(0,-scrolly,100,'linear');
+        }
+
+
+        // 双向通信
+        var ws = new WebSocket('ws://echo.websocket.org');  
+  
+        ws.onopen = function(){ws.send(''); };  
+        
+        ws.onmessage = function(evt){console.log(evt.data);ws.close();};  
+        
+        ws.onclose = function(evt){console.log('WebSocketClosed!');};  
+        
+        ws.onerror = function(evt){console.log('WebSocketError!');}; 
+
+    })
+    $('.option').click(function(){
+        $('.option input').focus();
     })
 </script>

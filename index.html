@@ -33,11 +33,11 @@
     <!-- 导航 -->
     <div class="top-nav">
         <div class="top-nav-wrap">
-            <div class="top-nav-item active" action="all-goods-box">
+            <div class="top-nav-item" action="all-goods-box">
                 <img src="imgs/nav-icon1.png" alt="">
                 <span>所有商品</span>
             </div>
-            <div class="top-nav-item" action="activity-zone">
+            <div class="top-nav-item active" action="activity-zone">
                 <img src="imgs/nav-icon2.png" alt="">
                 <span>活动专区</span>
             </div>
@@ -63,13 +63,31 @@
         <div class="activity-info integral-shadow">
             <img src="imgs/text.png" alt="" class="activity-left">
             <div class="activity-right">
-                <div class="activity-right-item">
-                    <div class="right-item-title">活动预告</div>
-                    <span>350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
-                </div>
-                <div class="activity-right-item">
-                    <div class="right-item-title">商品资讯</div>
-                    <span>350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                <div class="active-right-wrap">
+                    <div class="activity-right-item">
+                        <div class="right-item-title">活动预告</div>
+                        <span>1-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
+                    <div class="activity-right-item">
+                        <div class="right-item-title">商品资讯</div>
+                        <span>2-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
+                    <div class="activity-right-item">
+                        <div class="right-item-title">活动预告</div>
+                        <span>3-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
+                    <div class="activity-right-item">
+                        <div class="right-item-title">商品资讯</div>
+                        <span>4-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
+                    <div class="activity-right-item">
+                        <div class="right-item-title">活动预告</div>
+                        <span>5-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
+                    <div class="activity-right-item">
+                        <div class="right-item-title">商品资讯</div>
+                        <span>6-350积分秒杀预告来啦!!！积分兑豪礼...350积分秒杀预告来啦!!！积分兑豪礼...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,35 +157,35 @@
 
         <!-- 热卖 -->
         <div class="hot-sell integral-shadow">
-            <div class="hot-big-item">
+            <div class="hot-big-item hot-item">
                 <img src="imgs/hot.png" alt="" class="hot-sign">
                 <p class="good-name">便携式车载吸尘器</p>
                 <p class="good-worth">390积分</p>
                 <img src="imgs/hot_img.png" alt="" class="good-img">
                 <div class="go-detail">查看详情</div>
             </div>
-            <div class="hot-small-item">
+            <div class="hot-small-item hot-item">
                 <div class="small-item-left">
                     <p>PEACOCK保温杯</p>
                     <p>390积分</p>
                 </div>
                 <img src="imgs/img2.png" alt="" class="small-item-right">
             </div>
-            <div class="hot-small-item">
+            <div class="hot-small-item hot-item">
                 <div class="small-item-left">
                     <p>PEACOCK保温杯</p>
                     <p>390积分</p>
                 </div>
                 <img src="imgs/img2.png" alt="" class="small-item-right">
             </div>
-            <div class="hot-small-item">
+            <div class="hot-small-item hot-item">
                 <div class="small-item-left">
                     <p>PEACOCK保温杯</p>
                     <p>390积分</p>
                 </div>
                 <img src="imgs/img2.png" alt="" class="small-item-right">
             </div>
-            <div class="hot-small-item">
+            <div class="hot-small-item hot-item">
                 <div class="small-item-left">
                     <p>PEACOCK保温杯</p>
                     <p>390积分</p>
@@ -371,7 +389,6 @@
             pagination: '.swiper-pagination',
         });
 
-
         //顶部导航吸顶 
         window.onscroll = function () {
             var bannerHeight = $('#banner').height();
@@ -423,8 +440,28 @@
 
 
         //活动专区-------------------------------------------------------------------------------------------------------
-        //倒计时  结束日期2018/8/14 22:00:00
-        var endTime = '2018/8/16 16:00:00';
+        //活动专区轮播
+        function activeSwiper(){
+            var all_nums = $(".active-right-wrap .activity-right-item").length;
+            $(".active-right-wrap").height(all_nums/2 + 'rem');
+            if (all_nums>2){
+                setInterval(move,3000);
+            }
+        }
+        function move(){
+            $(".active-right-wrap").animate({top:'-0.5rem'},200,'swing',function(){
+                $(".active-right-wrap").css({top:0})
+                var indexbox = $(".active-right-wrap .activity-right-item").eq(0);
+                $(".active-right-wrap .activity-right-item:first").remove();
+                $(".active-right-wrap").append(indexbox);
+                // $(".active-right-wrap .activity-right-item").append(indexbox);
+            }); 
+        }
+        activeSwiper();
+
+
+        //倒计时  结束日期2018/8/21 22:00:00
+        var endTime = '2018/8/21 16:00:00';
         function getTime(d) {
             var date = d ? new Date(d) : new Date();
             var minseconds = date.getTime();
@@ -497,6 +534,13 @@
 
         // 点击商品
         $('.all-goods .goods-item').click(function(){
+            $('.goods-modal').show();
+        })
+
+        $('.kill-bot .kill-bot-item').click(function(){
+            $('.goods-modal').show();
+        })
+        $('.hot-sell .hot-item').click(function(){
             $('.goods-modal').show();
         })
 

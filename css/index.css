@@ -72,7 +72,6 @@
 }
 .activity-zone {
   padding: 0 0.3rem;
-  display: none;
 }
 .activity-zone .activity-info {
   height: 1.28rem;
@@ -87,9 +86,16 @@
   margin-right: 0.2rem;
 }
 .activity-zone .activity-info .activity-right {
+  position: relative;
   flex-grow: 1;
   overflow: hidden;
   height: 1rem;
+}
+.activity-zone .activity-info .activity-right .active-right-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .activity-zone .activity-info .activity-right .activity-right-item {
   height: 0.5rem;
@@ -306,6 +312,7 @@
   border-right: 1px solid #ebebeb;
 }
 .all-goods-top-wrap {
+  display: none;
   position: relative;
   height: 0.7rem;
 }
@@ -355,6 +362,7 @@
   border-top: 1px solid #fff;
 }
 .all-goods-box {
+  display: none;
   padding: 0 0.3rem;
   position: relative;
 }
