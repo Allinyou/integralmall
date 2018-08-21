@@ -432,6 +432,10 @@
 }
 .all-goods-box .all-goods-bottom .all-goods .goods-item .goods-info .goods-name {
   margin: 0.1rem 0 0.05rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
 }
 .all-goods-box .all-goods-bottom .all-goods .goods-item .goods-info .goods-integral-need {
   color: #f86672;

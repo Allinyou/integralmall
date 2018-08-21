@@ -15,8 +15,6 @@
     <div id="chat-box">
         <div class="chat-wrap">
             <div class="pull-down-wrap">下拉刷新</div>
-            <div class="indd" style="background:green;"></div>
-            <div class="indd" style="background:green;"></div>
         </div>
     </div>
     <div class="option integral-shadow">
@@ -35,13 +33,13 @@
             scroll = new BScroll(scrollBox, {
                 click:true,
                 // bounce:false,
-                probeType: 3,
+                probeType:0,
                 pullDownRefresh: {
                     threshold: 50,
                     stop: 50
                 }
             });
-            //加载中
+            //下拉加载
             scroll.on('pullingDown',function(){
                 // alert(111)
                 // scroll.finishPullDown();
@@ -70,23 +68,7 @@
 		});
 
 
-		// 点击提交按钮
-		$('.send ').click(function(e){
-			if (!inputText.trim()){
-				return;
-			}
-			wx.showToast({
-				title:'你好啊',
-				duration:1000
-			})
-            $('.chat-wrap').append('<div>'+inputText+'</div>');
-            $('.option input').val('');
-            $('.option .send').attr('src','imgs/send_no.png');
-            scroll.refresh();
-            inputText = '';
-            scrollToBottom();
-			// alert(333)
-        })
+		
 
         //键盘弹出
         var winHeight = $(window).height();   
@@ -106,16 +88,45 @@
         // 双向通信
         var ws = new WebSocket('ws://echo.websocket.org');  
   
-        ws.onopen = function(){ws.send(''); };  
+        ws.onopen = function(){
+            wx.showToast({
+				title:'通信已连接',
+				duration:1000
+			})
+        };  
         
-        ws.onmessage = function(evt){console.log(evt.data);ws.close();};  
+        ws.onmessage = function(evt){console.log(evt.data)};  
         
-        ws.onclose = function(evt){console.log('WebSocketClosed!');};  
+        ws.onclose = function(evt){
+            wx.showToast({
+				title:'连接已断开',
+				duration:1000
+			})
+        };  
         
-        ws.onerror = function(evt){console.log('WebSocketError!');}; 
-
+        ws.onerror = function(evt){
+            wx.showToast({
+				title:'出错了',
+				duration:1000
+			})
+        }; 
+        // 点击提交按钮
+		$('.send ').click(function(e){
+			if (!inputText.trim()){
+				return;
+			}
+            $('.chat-wrap').append('<div>'+inputText+'</div>');
+            ws.send(inputText);
+            $('.option input').val('');
+            $('.option .send').attr('src','imgs/send_no.png');
+            scroll.refresh();
+            inputText = '';
+            scrollToBottom();
+			// alert(333)
+        })
+        $('.option').click(function(){
+            $('.option input').focus();
+        })
     })
-    $('.option').click(function(){
-        $('.option input').focus();
-    })
+    
 </script>
