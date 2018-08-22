@@ -105,6 +105,22 @@ weixin.prototype.showToast = function(opa){
 		$('.weixin-toast').remove();
 	},dur)
 }
+weixin.prototype.showModal = function(options){
+	$('.chat-modal-box').show();
+	$('.chat-modal-box .chat-modal-title').html(options.title);
+	var confirm = document.querySelector('.chat-modal-box .chat-modal-confirm');
+	var cancel =  document.querySelector('.chat-modal-box .chat-modal-cancel');
+	var optionBox = document.querySelector('.chat-modal-box .chat-modal-option');
+	if (typeof (options.confirm) == 'function'){
+		confirm.onclick = options.confirm;
+	}	
+	if (typeof (options.cancel) == 'function') {
+		cancel.onclick = options.cancel;
+	}
+	optionBox.onclick = function() {
+		$('.chat-modal-box').hide();
+	}
+}
 
 
 var wx = new weixin();

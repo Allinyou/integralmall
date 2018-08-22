@@ -4,6 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0.98rem;
+  background-color: #f0f0f0;
+  font-size: 0.28rem;
 }
 #chat-box .chat-wrap {
   min-height: 100%;
@@ -19,10 +21,163 @@
   text-align: center;
   line-height: 50px;
 }
-#chat-box .indd {
-  height: 400px;
+#chat-box .chat-con {
+  padding: 0 0.42rem;
+  padding-bottom: 0.2rem;
+}
+#chat-box .chat-con .chat-opposite {
+  padding-top: 0.2rem;
+  position: relative;
+}
+#chat-box .chat-con .chat-opposite:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  clear: both;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal {
+  max-width: 80%;
+  background-color: #fff;
+  padding: 0.2rem;
+  border-radius: 0.1rem;
+  float: left;
+  position: relative;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal:after {
+  position: absolute;
+  left: -0.22rem;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: 0.12rem solid #fff;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal .modal-requset {
+  height: 0.7rem;
+  line-height: 0.7rem;
+  border-bottom: 1px solid #f7f7f7;
+  box-sizing: border-box;
+  justify-content: space-between;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal .modal-requset img {
+  width: 0.2rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal .modal-requset:last-of-type {
+  border-bottom: none;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-1:after,
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-2:after {
+  top: 50%;
+  margin-top: -0.12rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-2 img {
+  margin-left: 0.05rem;
+  width: 0.3rem;
+  vertical-align: middle;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-3 {
+  width: 80%;
+  padding: 0 0.2rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-3:after {
+  top: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-3 .modal-3-title {
+  height: 0.7rem;
+  line-height: 0.7rem;
+  border-bottom: 1px solid #f7f7f7;
+  color: #999999;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 {
+  width: 80%;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4:after {
+  top: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 .modal-4-greeting img {
+  width: 0.3rem;
+  vertical-align: middle;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 .modal-4-descript {
+  margin: 0.2rem 0;
+  color: #f7862e;
+  line-height: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 .modal-4-enter-website {
+  color: #2166c1;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 .modal-4-card {
+  margin: 0.1rem 0;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-4 .modal-4-card img {
+  width: 100%;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-5 {
+  width: 80%;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-5:after {
+  top: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-5 .modal-5-greeting img {
+  width: 0.3rem;
+  vertical-align: middle;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-5 .modal-5-card {
+  margin: 0.1rem 0;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-5 .modal-5-card img {
+  width: 100%;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-6 {
+  width: 80%;
+  line-height: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-6:after {
+  top: 0.4rem;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-6 .modal-6-title {
+  display: flex;
+}
+#chat-box .chat-con .chat-opposite .opposite-chat-modal-6 .modal-6-title p {
+  width: 0.3rem;
+}
+#chat-box .chat-con .chat-self {
+  padding-top: 0.2rem;
+}
+#chat-box .chat-con .chat-self:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  clear: both;
+}
+#chat-box .chat-con .chat-self .self-chat-modal {
+  max-width: 80%;
+  background-color: #d9f0ff;
+  padding: 0.2rem;
+  border-radius: 0.1rem;
+  float: right;
+  position: relative;
+}
+#chat-box .chat-con .chat-self .self-chat-modal:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: 0.12rem solid #d9f0ff;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.12rem;
+  right: -0.22rem;
 }
 .option {
   position: fixed;
