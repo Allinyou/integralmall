@@ -298,11 +298,9 @@
         var prevbtn = document.querySelector('.chat-swiper-box .change-swiper-left');
         var chatSwiperModal = document.querySelector('.chat-swiper-modal');
         $('.chat-con').on('click','.opposite-chat-modal .modal-card',function(){
-            $('.chat-swiper-modal').show();
-            
+            $('.chat-swiper-modal').show(); 
             var imgs = $(this).attr('data-imgs');
             var imgarr = imgs.split(',');
-            console.log(imgarr);
             var str = "";
             imgarr.forEach(ele=>{
                 str += "<div class='swiper-slide'><img src="+ele+" /></div>";
@@ -337,6 +335,7 @@
             chatSwiperModal.onclick = function(){
                 if (chatSwiper) {
                     chatSwiper.slideTo(0);
+                    chatSwiper.destroy();   
                 }
                 chatSwiper = null;
                 nextbtn.onclick = null;
@@ -344,9 +343,6 @@
                 $('.chat-swiper .swiper-wrapper').empty();
                 $(this).hide();
             }
-        })
-        $('.chat-swiper-modal').on('click',function(){
-            
         })
     })
 
