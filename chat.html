@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/chat.css">
     <script src="js/common.js"></script>
     <script src="js/bscroll.min.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/swiper.min.js"></script>
     <title>智能回复</title>
 </head>
 
@@ -66,8 +68,8 @@
                             <p>可获得50元话费充值卡一张</p>
                             <p>想家的时候，就和家里通个电话吧 </p>
                         </div>
-                        <div class="modal-4-enter-website">进入官网查看详情</div>
-                        <div class="modal-4-card">
+                        <div class="modal-4-enter-website" data-url="http://www.baidu.com">进入官网查看详情</div>
+                        <div class="modal-card" data-imgs="imgs/chat3.png">
                             <img src="imgs/chat3.png" alt="">
                         </div>
                         <div class="modal-requset">
@@ -89,7 +91,7 @@
                         <div class="modal-5-greeting">昌河 A6 震撼上市！
                             <img src="imgs/chat1.png" alt="">
                         </div>
-                        <div class="modal-5-card">
+                        <div class="modal-card" data-imgs="imgs/chat4.png,imgs/chat4.png,imgs/chat4.png">
                             <img src="imgs/chat4.png" alt="">
                         </div>
                         <div class="modal-requset">
@@ -144,6 +146,15 @@
                 <div class="chat-modal-confirm">是</div>
                 <div class="chat-modal-cancel">取消</div>
             </div>
+        </div>
+    </div>
+    <div class="chat-swiper-modal">
+        <div class="chat-swiper-box">
+            <div class="chat-swiper">
+                <div class="swiper-wrapper"></div>
+            </div>
+            <img src="imgs/swiper_left.png" alt="" class="change-swiper-left">
+            <img src="imgs/swiper_right.png" alt="" class="change-swiper-right">
         </div>
     </div>
 </body>
@@ -267,16 +278,75 @@
 
         //跳转别的网站
         $('.chat-con').on('click','.opposite-chat-modal-4 .modal-4-enter-website',function(){
+            var url = $(this).attr('data-url');
             wx.showModal({
                 title: '将要跳转到其它页面是否继续？',
                 confirm: function () {
-                    alert('点击了确定')
-
+                    // alert('点击了确定')
+                    // console.log(this);
+                    location.href = url;
                 },
                 cancel: function () {
-                    alert('点击了取消')
+                    // alert('点击了取消')
                 }
             });
+        })
+
+        //点击模板卡片图片弹出轮播
+        var chatSwiper = null;
+        var nextbtn = document.querySelector('.chat-swiper-box .change-swiper-right');
+        var prevbtn = document.querySelector('.chat-swiper-box .change-swiper-left');
+        var chatSwiperModal = document.querySelector('.chat-swiper-modal');
+        $('.chat-con').on('click','.opposite-chat-modal .modal-card',function(){
+            $('.chat-swiper-modal').show();
+            
+            var imgs = $(this).attr('data-imgs');
+            var imgarr = imgs.split(',');
+            console.log(imgarr);
+            var str = "";
+            imgarr.forEach(ele=>{
+                str += "<div class='swiper-slide'><img src="+ele+" /></div>";
+            })
+            $('.chat-swiper .swiper-wrapper').append(str);
+            if (imgarr.length<=1){
+                $(nextbtn).hide();
+                $(prevbtn).hide();
+            } else {
+                $(nextbtn).show();
+                $(prevbtn).hide();
+                chatSwiper = new Swiper('.chat-swiper',{
+                    onSlideChangeStart: function(swiper){
+                        $(nextbtn).show();
+                        $(prevbtn).show();
+                        if (imgarr.length-1==swiper.activeIndex){
+                            $(nextbtn).hide();
+                        } else if (swiper.activeIndex==0){
+                            $(prevbtn).hide();
+                        }
+                    }
+                });
+            }
+            nextbtn.onclick = function (e){
+                e.stopPropagation();
+                chatSwiper.slideNext()
+            }
+            prevbtn.onclick = function (e){
+                e.stopPropagation();
+                chatSwiper.slidePrev()
+            }
+            chatSwiperModal.onclick = function(){
+                if (chatSwiper) {
+                    chatSwiper.slideTo(0);
+                }
+                chatSwiper = null;
+                nextbtn.onclick = null;
+                prevbtn.onclick = null;
+                $('.chat-swiper .swiper-wrapper').empty();
+                $(this).hide();
+            }
+        })
+        $('.chat-swiper-modal').on('click',function(){
+            
         })
     })
 
