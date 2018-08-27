@@ -215,7 +215,6 @@
 }
 .chat-swiper-modal .chat-swiper-box .chat-swiper {
   width: 100%;
-  border-radius: 0.1rem;
   overflow: hidden;
 }
 .chat-swiper-modal .chat-swiper-box .chat-swiper .swiper-wrapper .swiper-slide img {
