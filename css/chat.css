@@ -6,6 +6,7 @@
   bottom: 0.98rem;
   background-color: #f0f0f0;
   font-size: 0.28rem;
+  user-select: text;
 }
 #chat-box .chat-wrap {
   min-height: 100%;

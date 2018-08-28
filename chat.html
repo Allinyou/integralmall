@@ -170,10 +170,12 @@
                 click: true,
                 // bounce:false,    
                 probeType: 0,
+                // preventDefault:false,
                 pullDownRefresh: {
                     threshold: 50,
                     stop: 50
-                }
+                },
+                preventDefaultException:{ID:/(^|chat-box|$)/}
             });
             //下拉加载
             scroll.on('pullingDown', function () {
