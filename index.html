@@ -360,6 +360,9 @@
             <img src="imgs/close-btn.png" alt="" class="close">
         </div>
     </div>
+    <div  class="go-tree">
+        <img src="imgs/tree.png" alt="">
+    </div>
 </body>
 
 </html>
@@ -528,5 +531,47 @@
             $('.goods-modal').show();
         })
 
+        var treebtn = document.querySelector('.go-tree');
+        var sx = 0;
+        var sy = 0
+        var sR =  0;
+        var sB =  0;
+        var btnWidth = 0;
+        var btnHeight = 0;
+        var sceenWidth = document.documentElement.clientWidth;
+        var sceenHeight = document.documentElement.clientHeight;
+        treebtn.ontouchstart = function(e){
+            btnWidth = $(this).width();
+            btnHeight = $(this).height();
+            sx = e.touches[0].pageX;
+            sy = e.touches[0].pageY;
+            sR =  $(this).css('right').split('px')[0];
+            sB =  $(this).css('bottom').split('px')[0];
+        }
+        treebtn.ontouchmove = function(e){
+            e.preventDefault();
+            var mx = e.touches[0].pageX;
+            var my = e.touches[0].pageY;
+            var durx = mx - sx;
+            var dury = my - sy;
+            var lR = sR-durx;
+            var lB = sB-dury;
+            if (sR-durx<0) {
+                lR = 0;
+            }
+            if (sB-dury<0){
+                lB = 0;
+            }
+            if (lR>=sceenWidth-btnWidth) {
+                lR = sceenWidth-btnWidth;
+            }
+            if (lB>=sceenHeight-btnHeight) {
+                lB=sceenHeight-btnHeight
+            }
+            $(this).css({'right':lR+'px',bottom:lB+'px'});
+        }
+        $('.go-tree').click(function(){
+            location.href = 'http://www.baidu.com'
+        })
     })
 </script>

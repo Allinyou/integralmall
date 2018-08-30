@@ -585,3 +585,14 @@
   width: 0.5rem;
   margin-left: -0.25rem;
 }
+.go-tree {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 2.5rem;
+  z-index: 1001;
+}
+.go-tree img {
+  display: block;
+  width: 1.2rem;
+  height: auto;
+}
