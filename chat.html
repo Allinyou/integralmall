@@ -35,6 +35,18 @@
                         hello world !
                     </div>
                 </div>
+                <div class="welcome">
+                    <div class="welcome-line"></div>
+                    <span>欢迎回来，昌哥好想你</span>
+                    <div class="welcome-line"></div>
+                </div>
+                <div class="copy-box">
+                    <div class="copy-con">
+                        <span>领券码：</span>
+                        <input class="code" value="X2030" disabled="true"/>
+                    </div>
+                    <div class="copy-btn">复制</div>
+                </div>
                 <div class="chat-opposite">
                     <div class="opposite-chat-modal-3 opposite-chat-modal">
                         <div class="modal-3-title">猜你想问</div>
@@ -346,6 +358,19 @@
                 $(this).hide();
             }
         })
+        var textLength = $('.copy-con input').val().length;
+        $('.copy-con input').attr('size',textLength);
     })
 
+    $('.copy-btn').click(function(){
+        var copyInput = document.querySelector('.copy-con input');
+        copyInput.disabled = false;
+        copyInput.select(); // 选中文本
+        document.execCommand("copy"); 
+        copyInput.disabled = true;
+        wx.showToast({
+            title:'复制成功',
+            duration:1000
+        })
+    })
 </script>

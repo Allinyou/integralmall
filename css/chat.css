@@ -235,3 +235,47 @@
 .chat-swiper-modal .chat-swiper-box .change-swiper-right {
   right: -0.7rem;
 }
+.welcome {
+  color: #999999;
+  height: 1rem;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.welcome .welcome-line {
+  height: 1px;
+  background-color: #999999;
+  flex-grow: 1;
+}
+.welcome span {
+  margin: 0 0.3rem;
+}
+.copy-box {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+.copy-box .copy-con {
+  height: 0.54rem;
+  padding-left: 0.3rem;
+  display: flex;
+  align-items: center;
+  background-color: #eaeaea;
+  border: 1px solid #eaeaea;
+}
+.copy-box .copy-con input {
+  background-color: transparent;
+}
+.copy-box .copy-con input:disabled {
+  color: #333333;
+}
+.copy-box .copy-btn {
+  height: 0.54rem;
+  line-height: 0.54rem;
+  padding: 0 0.4rem;
+  border: 1px solid #eaeaea;
+  color: #f7862e;
+  margin-left: 0.3rem;
+}
