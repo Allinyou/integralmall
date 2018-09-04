@@ -175,34 +175,31 @@
 <script>
     $(function () {
         // 点击发送消息
-        var scroll = null;
-        setTimeout(function () {
-            var scrollBox = document.getElementById('chat-box');
-            scroll = new BScroll(scrollBox, {
-                click: true,
-                // bounce:false,    
-                probeType: 0,
-                // preventDefault:false,
-                pullDownRefresh: {
-                    threshold: 50,
-                    stop: 50
-                },
-                preventDefaultException:{ID:/(^|chat-box|$)/}
-            });
-            //下拉加载
-            scroll.on('pullingDown', function () {
-                // alert(111)
-                // scroll.finishPullDown();
-                $('.pull-down-wrap').text('加载中 · · ·');
+        var scrollBox = document.getElementById('chat-box');
+        var scroll = new BScroll(scrollBox, {
+            click: true,
+            // bounce:false,    
+            probeType: 0,
+            // preventDefault:false,
+            pullDownRefresh: {
+                threshold: 50,
+                stop: 50
+            },
+            preventDefaultException:{ID:/(^|chat-box|$)/}
+        });
+        //下拉加载
+        scroll.on('pullingDown', function () {
+            // alert(111)
+            // scroll.finishPullDown();
+            $('.pull-down-wrap').text('加载中 · · ·');
+            setTimeout(function () {
+                $('.pull-down-wrap').text('加载成功');
                 setTimeout(function () {
-                    $('.pull-down-wrap').text('加载成功');
-                    setTimeout(function () {
-                        $('.pull-down-wrap').text('下拉刷新');
-                        scroll.finishPullDown();
-                    }, 1000);
-                }, 2000);
-            })
-        }, 200)
+                    $('.pull-down-wrap').text('下拉刷新');
+                    scroll.finishPullDown();
+                }, 1000);
+            }, 2000);
+        })
 
 
 
